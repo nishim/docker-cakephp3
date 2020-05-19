@@ -1,7 +1,7 @@
-version: '3.1'
+version: '3.8'
 services:
     db:
-        container_name: db
+        container_name: cake-db
         image: mysql:8
         environment:
             - MYSQL_ROOT_PASSWORD=root
@@ -15,7 +15,7 @@ services:
             - "33306:3306"
 
     web:
-        container_name: web
+        container_name: cake-web
         build: ./docker/nginx
         restart: always
         ports:
@@ -24,7 +24,7 @@ services:
             - ./app/:/var/www/html
 
     app:
-        container_name: app
+        container_name: cake-app
         build: ./docker/php-fpm
         restart: always
         volumes:
